@@ -1,0 +1,7 @@
+{
+    "host":"127.0.0.1",
+    "user":"user_api",
+    "pass":"UserPass@741",
+    "port":"3306",
+    "name":"sianalitica"
+}
