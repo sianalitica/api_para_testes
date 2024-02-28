@@ -1,18 +1,30 @@
-import Config from "./config";
+/**
+ * 
+ * @author Andrei Coelho
+ * @version 1
+ * @description This library makes use of the MySQL library to manage the database and its connections, simplifying query execution
+ * 
+ */
+
 import { createPool, OkPacket, Pool, PoolConnection } from "mysql";
 import util from 'util'
-
-const database = Config.instance().getDatabase()
 
 interface data_success  { insertId:number, affectedRows:number, changedRows:number }
 interface data_error    { code:string,errno:number, message?:string, state?:string }
 interface data_response { data_success:data_success, data_error:data_error }
 interface data_pool     { alias?:string, host:string, user:string, pass:string, database:string, port?:number }
 
+/**
+ * @class ResponseQuery
+ * 
+ * Objeto de resposta da consulta com o banco de dados
+ * 
+ */
+
 abstract class ResponseQuery<T> {
 
     private statusQ = true
-    
+
     protected data_response:data_response = {
         data_success:{
             insertId:0,
@@ -88,6 +100,12 @@ class SuccessQuery<T extends Object> extends ResponseQuery<T> {
 
 }
 
+/**
+ * @class MySQLi
+ * 
+ * class that manages the database and its connections and executes queries
+ * 
+ */
 
 class MySQLi {
     
