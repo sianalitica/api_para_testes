@@ -1,3 +1,13 @@
-import mysqli from "./libs/mysqli";
+import Config from "./libs/config";
+import {addPool} from "./libs/mysqli";
 
-(async () => console.log(await mysqli("select count(*) from documentos_info").exec()))()
+(() => {
+    const database = Config.instance().getDatabase();
+    addPool({
+        alias:"main",
+        host:database.host,
+        user:database.user,
+        pass:database.pass,
+        database:database.name
+    })
+})()
