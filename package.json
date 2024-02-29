@@ -1,0 +1,37 @@
+{
+  "name": "api_para_testes",
+  "version": "0.0.1",
+  "description": "Apenas uma API para testes e analise de dados",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "test": "jest main.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sianalitica/api_para_testes.git"
+  },
+  "author": "Andrei Coelho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sianalitica/api_para_testes/issues"
+  },
+  "homepage": "https://github.com/sianalitica/api_para_testes#readme",
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/mysql": "^2.15.25",
+    "jest": "^29.7.0",
+    "sucrase": "^3.35.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  }
+}
