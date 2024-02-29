@@ -1,4 +1,5 @@
 *.production.json
+server/
 
 # Logs
 logs
