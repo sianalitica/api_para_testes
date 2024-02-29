@@ -1,13 +1,4 @@
-import Config from "./libs/config";
-import {addPool} from "./libs/mysqli";
+import startApp from "./init";
+import app from "./app";
 
-(() => {
-    const database = Config.instance().getDatabase();
-    addPool({
-        alias:"main",
-        host:database.host,
-        user:database.user,
-        pass:database.pass,
-        database:database.name
-    })
-})()
+startApp(app)

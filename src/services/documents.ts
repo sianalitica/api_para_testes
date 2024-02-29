@@ -2,13 +2,10 @@ import {mysqli} from "../libs/mysqli"
 
 const getListDocuments = () => {
 
-    // let conn = mysqli()
-
-
 }
 
 const getCategorias = () => {
 
-    
-
 }
+
+export default { getCategorias, getListDocuments }
