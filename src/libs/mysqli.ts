@@ -142,9 +142,14 @@ class MySQLi {
     }
 
     use(aliasConn:string){
+        this.connection = undefined
         this.aliasConn = aliasConn
         return this
     } 
+
+    execSync(){
+        // função de callback
+    }
 
     async exec<T extends Object>():Promise<ResponseQuery<T>> {
 
