@@ -154,23 +154,23 @@ class MySQLi {
     async exec<T extends Object>():Promise<ResponseQuery<T>> {
 
         if(MySQLi.pools.length == 0){
-            return new ErrorQuery('NO_COONECTION_ERR', 0, '')
+            return new ErrorQuery('NO_CONNECTION_ER', 1, 'no pool created')
         }
 
         let aliasConn = this.aliasConn ? this.aliasConn : Object.keys(MySQLi.pools[0])[0]
-
+        
         const conn = await this.getConnection(aliasConn)
-        if(conn == undefined) return new ErrorQuery('NO_COONECTION_ERR', 0, '')
+        if(conn == undefined) return new ErrorQuery('NO_CONNECTION_ER', 2, 'alias not identified')
 
         return new Promise((resolve) => {
             try {
-                if(!this.querystr) return resolve(new ErrorQuery('NO_QUERY_ERROR', 0, ''))
+                if(!this.querystr) return resolve(new ErrorQuery('NO_QUERY_ER', 3, 'query not created'))
                 conn.query(this.querystr, this.binds, (err,res) => {
                     if(err) return resolve(new ErrorQuery(err.code,err.errno,err.sqlMessage,err.sqlState))
                     return resolve(new SuccessQuery(res))
                 })
             } catch(e) {
-                return resolve(new ErrorQuery('EXCEPTION_ERR', 0, "Ocorreu um erro de excessão em 'exec'"))
+                return resolve(new ErrorQuery('EXCEPTION_ER', 4, "Ocorreu um erro de excessão em 'exec'"))
             }
         })
             

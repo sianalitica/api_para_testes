@@ -2,7 +2,7 @@ import { QueryDocFull } from "../src/entidades/QueryDoc"
 
 
 describe("test query", () => {
-    // let resp = await mysqli("select count(*) from documentos_info").exec()
+
     test("testando query simples", () => {
         let query = new QueryDocFull({})
         console.log(query.toString())

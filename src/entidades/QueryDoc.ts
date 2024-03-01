@@ -1,5 +1,7 @@
 
 const map_fields:{[key:string]:string} = {
+    documento_id:"documentos_brutos.id",
+    id:"documento_info.id",
     categoria:"documentos_info.categoria",
     tipo:"documentos_info.tipo",
     especie:"documentos_info.especie",
@@ -46,12 +48,12 @@ class QueryDocFull {
     private where = ""
     private binds:any[] = []
 
-    constructor(queryObj:data_info){
+    constructor(queryObj?:data_info){
 
         this.queryString += "SELECT "
         let asterisco = true
         
-        if(queryObj.fields && queryObj.fields.length > 0){
+        if(queryObj && queryObj.fields && queryObj.fields.length > 0){
             
             for(let f of queryObj.fields){
                 asterisco = false
@@ -71,6 +73,8 @@ class QueryDocFull {
                 documentos_brutos 
             JOIN
                 documentos_info ON documentos_info.id = documentos_brutos.documento_info_id `
+
+        if(!queryObj) return;
 
         if(queryObj.categoria){
             this.init_where()
@@ -175,4 +179,4 @@ class QueryDocSimple {
 
 }
 
-export { QueryDocFull} 
+export { QueryDocFull, data_info } 
